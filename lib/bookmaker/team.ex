@@ -34,14 +34,14 @@ defmodule Bookmaker.Team do
         :api_id, :name, :market, :alias,
         :sr_id, :wins, :losses, :ties, :win_pct,
         :points_for, :points_against, :points_rank,
-        :touchdown_diff, :conf_h2h
+        :touchdown_diff, :conf_h2h, :division_id, :conference_id
       ])
     |> validate_required(
       [
         :api_id, :name, :market, :alias,
         :sr_id, :wins, :losses, :ties, :win_pct,
         :points_for, :points_against, :points_rank,
-        :touchdown_diff, :conf_h2h
+        :touchdown_diff, :conf_h2h, :division_id, :conference_id
       ])
   end
 end

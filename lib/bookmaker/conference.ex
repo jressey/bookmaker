@@ -8,8 +8,8 @@ defmodule Bookmaker.Conference do
     field :api_id, :string
     field :name, :string
 
-    has_many :teams, EctoAssoc.Team
-    has_many :divisions, EctoAssoc.Devision
+    has_many :teams, Bookmaker.Team
+    has_many :divisions, Bookmaker.Division
 
     timestamps()
   end

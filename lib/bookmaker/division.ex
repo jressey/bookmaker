@@ -10,7 +10,7 @@ defmodule Bookmaker.Division do
 
     belongs_to :conference, Bookmaker.Conference
 
-    has_many :teams, EctoAssoc.Team
+    has_many :teams, Bookmaker.Team
 
     timestamps()
   end
@@ -18,7 +18,7 @@ defmodule Bookmaker.Division do
   @doc false
   def changeset(division, attrs) do
     division
-    |> cast(attrs, [:api_id, :name, :alias])
-    |> validate_required([:api_id, :name, :alias])
+    |> cast(attrs, [:api_id, :name, :alias, :conference_id])
+    |> validate_required([:api_id, :name, :alias, :conference_id])
   end
 end
