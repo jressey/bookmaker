@@ -20,6 +20,9 @@ defmodule Bookmaker.Team do
     field :touchdown_diff, :integer
     field :conf_h2h, :integer
 
+    belongs_to :division, Bookmaker.Division
+    belongs_to :conference, Bookmaker.Conference
+
     timestamps()
   end
 
