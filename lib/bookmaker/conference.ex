@@ -4,7 +4,7 @@ defmodule Bookmaker.Conference do
 
 
   schema "conferences" do
-    field :alias, :string
+    field :abbreviation, :string
     field :api_id, :string
     field :name, :string
 
@@ -17,7 +17,8 @@ defmodule Bookmaker.Conference do
   @doc false
   def changeset(conference, attrs) do
     conference
-    |> cast(attrs, [:api_id, :name, :alias])
-    |> validate_required([:api_id, :name, :alias])
+    |> cast(attrs, [:api_id, :name, :abbreviation])
+    |> unique_constraint(:api_id)
+    |> validate_required([:api_id, :name, :abbreviation])
   end
 end

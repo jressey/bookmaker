@@ -4,7 +4,7 @@ defmodule Bookmaker.Division do
 
 
   schema "divisions" do
-    field :alias, :string
+    field :abbreviation, :string
     field :api_id, :string
     field :name, :string
 
@@ -18,7 +18,8 @@ defmodule Bookmaker.Division do
   @doc false
   def changeset(division, attrs) do
     division
-    |> cast(attrs, [:api_id, :name, :alias, :conference_id])
-    |> validate_required([:api_id, :name, :alias, :conference_id])
+    |> cast(attrs, [:api_id, :name, :abbreviation, :conference_id])
+    |> unique_constraint(:api_id)
+    |> validate_required([:api_id, :name, :abbreviation, :conference_id])
   end
 end
