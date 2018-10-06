@@ -1,9 +1,9 @@
-defmodule Bookmaker.NflCoordinator do
+defmodule Bookmaker.NflStructureCoordinator do
   alias Bookmaker.NflHttpService, as: NflHttpService
   alias Bookmaker.NflParser, as: NflParser
   alias Bookmaker.NflRepository, as: NflRepository
 
-  #TODO: set this up on a schedule to reload once a year
+  #TODO: set this up on a schedule to reload once a year or something
   def process() do
     body = NflHttpService.getStandings()
     processConferences(body)
