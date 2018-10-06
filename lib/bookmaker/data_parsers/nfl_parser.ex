@@ -21,7 +21,6 @@ defmodule Bookmaker.NflParser do
       end)
     end)
     |> List.flatten
-    |> IO.inspect
   end
 
   def teams(body) do
