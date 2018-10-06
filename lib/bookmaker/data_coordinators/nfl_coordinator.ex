@@ -3,10 +3,12 @@ defmodule Bookmaker.NflCoordinator do
   alias Bookmaker.NflParser, as: NflParser
   alias Bookmaker.NflRepository, as: NflRepository
 
+  #TODO: set this up on a schedule to reload once a year
   def process() do
     body = NflHttpService.getStandings()
-    # processConferences(body)
+    processConferences(body)
     processDivisions(body)
+    processTeams(body)
   end
 
   def processConferences(body) do
@@ -20,6 +22,13 @@ defmodule Bookmaker.NflCoordinator do
     NflParser.divisions(body)
     |> Enum.map(fn division ->
       NflRepository.saveDivision(division)
+    end)
+  end
+
+  def processTeams(body) do
+    NflParser.teams(body)
+    |> Enum.map(fn team ->
+      NflRepository.saveTeam(team)
     end)
   end
 end
