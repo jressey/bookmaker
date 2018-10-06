@@ -5,13 +5,23 @@ defmodule Bookmaker.NflCoordinator do
 
   def process() do
     body = NflHttpService.getStandings()
-    processConferences(body)
+    # processConferences(body)
+    processDivisions(body)
   end
 
   def processConferences(body) do
       NflParser.conferences(body)
-      |> Enum.map(fn x ->
-        NflRepository.saveConference(x)
+      |> Enum.map(fn conference ->
+        NflRepository.saveConference(conference)
       end)
+  end
+
+  def processDivisions(body) do
+    NflParser.divisions(body)
+    # |> IO.inspect
+    # |> Enum.map(fn division ->
+      # IO.inspect division
+      # NflRepository.saveDivision(division)
+    # end)
   end
 end

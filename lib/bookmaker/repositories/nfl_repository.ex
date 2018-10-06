@@ -1,8 +1,10 @@
 defmodule Bookmaker.NflRepository do
+  alias Bookmaker.Repo, as: Repo
   alias Bookmaker.Conference, as: Conference
+  alias Bookmaker.Division, as: Division
 
   def saveConference(conference) do
-    Bookmaker.Repo.insert(
+    Repo.insert(
       Conference.changeset(%Conference{}, %{
         abbreviation: conference[:alias],
         api_id: conference[:id],
@@ -10,4 +12,19 @@ defmodule Bookmaker.NflRepository do
       })
     )
   end
+
+  def findConferenceByApiId(api_id) do
+
+  end
+
+  def saveDivision(division) do
+    Repo.insert(
+      Division.changeset(%Division{}, %{
+        abbreviation: division[:alias],
+        api_id: division[:id],
+        name: division[:name]
+      })
+    )
+  end
 end
+
