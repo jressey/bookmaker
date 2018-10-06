@@ -10,17 +10,21 @@ defmodule Bookmaker.NflParser do
 
   def divisions(body) do
     get_in(body, [:conferences])
-    |> Enum.map(fn conference ->
-      Map.put(conference, :db_id, NflRepository.findConferenceByApiId(conference[:api_id][:id]))
-    end)
+    |> seedConferenceDBId
     |> Enum.map(fn conference ->
       get_in(conference, [:divisions])
       |> Enum.map(fn divisions ->
         Map.delete(divisions, :teams)
-        |> Map.put(:conference_api_id, conference[:db_id])
+        |> Map.put(:conference_id, conference[:db_id])
       end)
     end)
     |> List.flatten
+  end
+
+  def seedConferenceDBId(conferences) do
+    Enum.map(conferences, fn conference ->
+      Map.put(conference, :db_id, NflRepository.findConferenceByApiId(conference[:id]))
+    end)
   end
 
   def teams(body) do

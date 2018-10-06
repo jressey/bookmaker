@@ -1,4 +1,5 @@
 defmodule Bookmaker.NflRepository do
+  import Ecto.Query
   alias Bookmaker.Repo, as: Repo
   alias Bookmaker.Conference, as: Conference
   alias Bookmaker.Division, as: Division
@@ -14,7 +15,7 @@ defmodule Bookmaker.NflRepository do
   end
 
   def findConferenceByApiId(api_id) do
-
+    List.first(Repo.all(from c in "conferences", where: c.api_id == ^api_id, select: c.id))
   end
 
   def saveDivision(division) do
@@ -22,7 +23,8 @@ defmodule Bookmaker.NflRepository do
       Division.changeset(%Division{}, %{
         abbreviation: division[:alias],
         api_id: division[:id],
-        name: division[:name]
+        name: division[:name],
+        conference_id: division[:conference_id]
       })
     )
   end

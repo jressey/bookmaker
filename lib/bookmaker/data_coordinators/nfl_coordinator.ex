@@ -18,10 +18,8 @@ defmodule Bookmaker.NflCoordinator do
 
   def processDivisions(body) do
     NflParser.divisions(body)
-    |> IO.inspect
-    # |> Enum.map(fn division ->
-      # IO.inspect division
-      # NflRepository.saveDivision(division)
-    # end)
+    |> Enum.map(fn division ->
+      NflRepository.saveDivision(division)
+    end)
   end
 end
