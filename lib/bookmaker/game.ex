@@ -1,10 +1,6 @@
 defmodule Bookmaker.Game do
   use Ecto.Schema
-  use Timex.Ecto.Timestamps
   import Ecto.Changeset
-
-  @timestamps_opts [type: Timex.Ecto.DateTime,
-                    autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}]
 
   schema "games" do
     field :scheduled, :utc_datetime
