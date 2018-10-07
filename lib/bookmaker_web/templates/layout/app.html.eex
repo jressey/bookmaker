@@ -7,21 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Bookmaker!</title>
+    <title>Where is Jim Thorpe?</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
   <body>
     <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
-
+      <img
+        src="https://i.ytimg.com/vi/iu5sa8MiJvE/hqdefault.jpg"
+        height=140
+      />
+      <span>Title Text</span>
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
