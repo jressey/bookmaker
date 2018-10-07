@@ -17,6 +17,7 @@ defmodule Bookmaker.Game do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:scheduled, :week, :away_team_id, :home_team_id])
+    |> unique_constraint(:week_team_constraint, name: :week_team_index)
     |> validate_required([:scheduled, :week, :away_team_id, :home_team_id])
   end
 end

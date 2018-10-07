@@ -12,6 +12,10 @@ defmodule Bookmaker.NflRepository do
     Repo.all from g in Game, preload: [:away_team, :home_team]
   end
 
+  def gamesInWeek(week) do
+    Repo.all from g in Game, where: g.week == ^week, preload: [:away_team, :home_team]
+  end
+
   #general setters
   def saveConference(conference) do
     Repo.insert(
