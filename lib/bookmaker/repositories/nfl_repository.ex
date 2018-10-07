@@ -4,6 +4,7 @@ defmodule Bookmaker.NflRepository do
   alias Bookmaker.Conference, as: Conference
   alias Bookmaker.Division, as: Division
   alias Bookmaker.Team, as: Team
+  alias Bookmaker.Game, as: Game
 
   def saveConference(conference) do
     Repo.insert(
@@ -46,6 +47,16 @@ defmodule Bookmaker.NflRepository do
         division_id: team[:division_id]
       })
     )
+  end
+
+  def saveGame(game) do
+    # Repo.insert(
+    #   # Game.changeset(%Game{}, %{
+    #   #   away_team_id: game[:away_team_id],
+    #   #   home_team_id: game[:home_team_id],
+    #   #   scheduled: game[:scheduled]
+    #   # })
+    # )
   end
 
   def findConferenceByApiId(api_id) do
