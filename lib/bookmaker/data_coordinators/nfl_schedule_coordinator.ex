@@ -1,6 +1,7 @@
 defmodule Bookmaker.NflScheduleCoordinator do
   alias Bookmaker.NflHttpService, as: NflHttpService
   alias Bookmaker.NflParser, as: NflParser
+  alias Bookmaker.NflRepository, as: NflRepository
 
   def process() do
     NflHttpService.getSchedule()
@@ -9,7 +10,8 @@ defmodule Bookmaker.NflScheduleCoordinator do
 
   def processGames(body) do
     NflParser.games(body)
-    # for each game
-    # get home team id and way team id from repo, insert those values
+    |> Enum.map(fn game ->
+      NflRepository.saveGame(game)
+    end)
   end
 end

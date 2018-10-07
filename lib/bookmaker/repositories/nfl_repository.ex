@@ -1,3 +1,4 @@
+#TODO: break in to object level repositories
 defmodule Bookmaker.NflRepository do
   import Ecto.Query
   alias Bookmaker.Repo, as: Repo
@@ -6,6 +7,12 @@ defmodule Bookmaker.NflRepository do
   alias Bookmaker.Team, as: Team
   alias Bookmaker.Game, as: Game
 
+  # general getters
+  def games do
+    Repo.all from g in Game, preload: [:away_team, :home_team]
+  end
+
+  #general setters
   def saveConference(conference) do
     Repo.insert(
       Conference.changeset(%Conference{}, %{
@@ -54,11 +61,13 @@ defmodule Bookmaker.NflRepository do
       Game.changeset(%Game{}, %{
         away_team_id: game[:away_team_id],
         home_team_id: game[:home_team_id],
-        scheduled: game[:scheduled]
+        scheduled: game[:scheduled],
+        week: game[:week]
       })
     )
   end
 
+  # special getters
   def findConferenceIdByApiId(api_id) do
     List.first(Repo.all(from c in "conferences", where: c.api_id == ^api_id, select: c.id))
   end

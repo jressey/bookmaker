@@ -38,7 +38,10 @@ defmodule Bookmaker.NflParser do
   end
 
   def games(body) do
-    IO.inspect body
+    get_in(body, [:week, :games])
+    |> Enum.map(fn game ->
+      Map.merge(game, %{away_team_id: NflRepository.findTeamIdByApiId(game[:away][:id]), home_team_id: NflRepository.findTeamIdByApiId(game[:home][:id]), week: body[:week][:sequence]})
+    end)
   end
 
   def seedConferenceDBId(conferences) do

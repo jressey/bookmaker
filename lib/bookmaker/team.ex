@@ -20,6 +20,9 @@ defmodule Bookmaker.Team do
     belongs_to(:division, Bookmaker.Division)
     belongs_to(:conference, Bookmaker.Conference)
 
+    has_many :away_games, Bookmaker.Game, foreign_key: :away_team_id
+    has_many :home_games, Bookmaker.Game, foreign_key: :home_team_id
+
     timestamps()
   end
 
