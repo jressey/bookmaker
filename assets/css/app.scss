@@ -1,0 +1,13 @@
+/* This file is for your main application css. */
+
+$primary-text: #101820;
+
+.title-bar {
+  text-align: center;
+}
+
+.title-text {
+  font-size: 3.0em;
+  vertical-align: bottom;
+  color: $primary-text;
+}
