@@ -14,6 +14,7 @@ defmodule Bookmaker.Application do
       supervisor(BookmakerWeb.Endpoint, []),
       # Start your own worker by calling: Bookmaker.Worker.start_link(arg1, arg2, arg3)
       # worker(Bookmaker.Worker, [arg1, arg2, arg3]),
+      worker(Bookmaker.Scheduler, [])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

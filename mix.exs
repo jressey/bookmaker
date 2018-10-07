@@ -33,6 +33,7 @@ defmodule Bookmaker.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:quantum, "~> 2.3"},
       {:timex, "~> 3.0"},
       {:phoenix, "~> 1.3.4"},
       {:phoenix_pubsub, "~> 1.0"},

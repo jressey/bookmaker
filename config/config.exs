@@ -31,3 +31,7 @@ config :bookmaker, Bookmaker.Env.Http.SportRadar,
   root_url: System.get_env("SPORTRADAR_ROOT_URL"),
   auth_key: System.get_env("SPORTRADAR_KEY")
 
+config :bookmaker, Bookmaker.Scheduler,
+  jobs: [
+    {"@daily",   fn -> Bookmaker.StartupService.go() end},
+  ]
