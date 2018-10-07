@@ -1,4 +1,4 @@
 <h1>Game of the week!</h1>
 <p>Away Team: <%= @game_of_week.away_team.name %></p>
 <p>Home Team: <%= @game_of_week.home_team.name %></p>
-<p>Game Time: <%= @game_of_week.scheduled |> DateFormat.format!("{h12}:{0m} {am}") %></p>
+<p>Game Time: <%= @game_of_week.scheduled %></p>
