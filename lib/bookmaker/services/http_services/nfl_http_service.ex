@@ -2,20 +2,20 @@ defmodule Bookmaker.NflHttpService do
   alias Bookmaker.HttpClient, as: HttpClient
 
   def root_url() do
-    "https://api.sportradar.us/nfl/official/trial/v5/es/"
+    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:root_url]
   end
 
-  def key() do
-    "v63vdke86u7r2eh2fdgrz7v8"
+  def auth_key() do
+    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:auth_key]
   end
 
   def getStandings() do
-    url = "#{root_url()}seasons/2018/standings.json?api_key=#{key()}"
+    url = "#{root_url()}seasons/2018/standings.json?api_key=#{auth_key()}"
     getBody(url)
   end
 
   def getSchedule() do
-    url = "#{root_url()}games/2018/REG/5/schedule.json?api_key=#{key()}"
+    url = "#{root_url()}games/2018/REG/5/schedule.json?api_key=#{auth_key()}"
     getBody(url)
   end
 

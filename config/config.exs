@@ -25,3 +25,8 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+#ENV VARS
+config :bookmaker, Bookmaker.Env.Http.SportRadar,
+  root_url: System.get_env("SPORTRADAR_ROOT_URL"),
+  auth_key: System.get_env("SPORTRADAR_KEY")
