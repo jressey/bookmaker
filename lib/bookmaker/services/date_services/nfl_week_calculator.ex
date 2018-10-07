@@ -1,8 +1,7 @@
 defmodule Bookmaker.NflWeekCalculator do
 
   # TODO: make this an initialized value
-  def calculate_week_for_date() do
-    moment = Timex.to_date(Timex.now())
+  def calculate_week_for_date(moment \\ Timex.now()) do
     day_1 = Timex.to_date({2018, 9, 6})
     day_2 = Timex.shift(day_1, days: 7)
     day_3 = Timex.shift(day_2, days: 7)

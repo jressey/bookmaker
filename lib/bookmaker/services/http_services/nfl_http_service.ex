@@ -14,8 +14,9 @@ defmodule Bookmaker.NflHttpService do
     getBody(url)
   end
 
-  def getSchedule() do
-    url = "#{root_url()}games/2018/REG/5/schedule.json?api_key=#{auth_key()}"
+  @spec getSchedule(any()) :: any()
+  def getSchedule(week) do
+    url = "#{root_url()}games/2018/REG/#{week}/schedule.json?api_key=#{auth_key()}"
     getBody(url)
   end
 
