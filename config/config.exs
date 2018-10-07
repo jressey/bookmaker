@@ -30,3 +30,4 @@ import_config "#{Mix.env}.exs"
 config :bookmaker, Bookmaker.Env.Http.SportRadar,
   root_url: System.get_env("SPORTRADAR_ROOT_URL"),
   auth_key: System.get_env("SPORTRADAR_KEY")
+
