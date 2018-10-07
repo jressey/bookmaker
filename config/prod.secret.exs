@@ -9,7 +9,7 @@ use Mix.Config
 # kept out of version control and might be hard to recover
 # or recreate for your teammates (or yourself later on).
 config :bookmaker, BookmakerWeb.Endpoint,
-  load_from_system_env: true,,
+  load_from_system_env: true,
   url: [scheme: "https", host: "morning-springs-71755.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
