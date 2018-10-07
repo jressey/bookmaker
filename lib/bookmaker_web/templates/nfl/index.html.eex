@@ -1,4 +1,7 @@
+<% use Timex %>
 <h1>Game of the week!</h1>
 <p>Away Team: <%= @game_of_week.away_team.name %></p>
 <p>Home Team: <%= @game_of_week.home_team.name %></p>
-<p>Game Time: <%= @game_of_week.scheduled %></p>
+<p>Date: <%= @game_of_week.scheduled |> Timex.format!("%Y-%m-%d", :strftime) %></p>
+<p>Time: <%= @game_of_week.scheduled |> Timex.format!("%H:%M", :strftime) %></p>
+

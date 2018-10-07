@@ -1,9 +1,13 @@
 defmodule Bookmaker.Game do
   use Ecto.Schema
+  use Timex.Ecto.Timestamps
   import Ecto.Changeset
 
+  @timestamps_opts [type: Timex.Ecto.DateTime,
+                    autogenerate: {Timex.Ecto.DateTime, :autogenerate, []}]
+
   schema "games" do
-    field :scheduled, :naive_datetime
+    field :scheduled, :utc_datetime
     field :week, :integer
     belongs_to :away_team, Bookmaker.Team, foreign_key: :away_team_id
     belongs_to :home_team, Bookmaker.Team, foreign_key: :home_team_id

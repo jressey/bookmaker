@@ -20,7 +20,7 @@ defmodule Bookmaker.Mixfile do
   def application do
     [
       mod: {Bookmaker.Application, []},
-      extra_applications: [:logger, :runtime_tools, :httpoison]
+      extra_applications: [:logger, :runtime_tools, :httpoison, :timex]
     ]
   end
 
@@ -33,6 +33,7 @@ defmodule Bookmaker.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:timex, "~> 3.0"},
       {:phoenix, "~> 1.3.4"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
