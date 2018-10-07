@@ -50,21 +50,25 @@ defmodule Bookmaker.NflRepository do
   end
 
   def saveGame(game) do
-    # Repo.insert(
-    #   # Game.changeset(%Game{}, %{
-    #   #   away_team_id: game[:away_team_id],
-    #   #   home_team_id: game[:home_team_id],
-    #   #   scheduled: game[:scheduled]
-    #   # })
-    # )
+    Repo.insert(
+      Game.changeset(%Game{}, %{
+        away_team_id: game[:away_team_id],
+        home_team_id: game[:home_team_id],
+        scheduled: game[:scheduled]
+      })
+    )
   end
 
-  def findConferenceByApiId(api_id) do
+  def findConferenceIdByApiId(api_id) do
     List.first(Repo.all(from c in "conferences", where: c.api_id == ^api_id, select: c.id))
   end
 
-  def findDivisionByApiId(api_id) do
+  def findDivisionIdByApiId(api_id) do
     List.first(Repo.all(from d in "divisions", where: d.api_id == ^api_id, select: d.id))
+  end
+
+  def findTeamIdByApiId(api_id) do
+    List.first(Repo.all(from t in "teams", where: t.api_id == ^api_id, select: t.id))
   end
 end
 

@@ -4,6 +4,7 @@ defmodule Bookmaker.Game do
 
   schema "games" do
     field :scheduled, :naive_datetime
+    field :week, :integer
     belongs_to :away_team, Bookmaker.Team, foreign_key: :away_team_id
     belongs_to :home_team, Bookmaker.Team, foreign_key: :home_team_id
 
@@ -15,7 +16,7 @@ defmodule Bookmaker.Game do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:scheduled, :away_team_id, :home_team_id])
-    |> validate_required([:scheduled, :away_team_id, :home_team_id])
+    |> cast(params, [:scheduled, :week, :away_team_id, :home_team_id])
+    |> validate_required([:scheduled, :week, :away_team_id, :home_team_id])
   end
 end
