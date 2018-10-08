@@ -2,11 +2,11 @@ defmodule Bookmaker.NflHttpService do
   alias Bookmaker.HttpClient, as: HttpClient
 
   def root_url() do
-    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:root_url]
+    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:root_nfl_url]
   end
 
   def auth_key() do
-    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:auth_key]
+    Application.get_env(:bookmaker, Bookmaker.Env.Http.SportRadar)[:nfl_auth_key]
   end
 
   def getStandings() do
@@ -20,6 +20,7 @@ defmodule Bookmaker.NflHttpService do
     getBody(url)
   end
 
+  @spec getBody(binary()) :: any()
   def getBody(url) do
     parse_tuple(HttpClient.get(url))
   end

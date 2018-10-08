@@ -28,8 +28,10 @@ import_config "#{Mix.env}.exs"
 
 #ENV VARS
 config :bookmaker, Bookmaker.Env.Http.SportRadar,
-  root_url: System.get_env("SPORTRADAR_ROOT_URL"),
-  auth_key: System.get_env("SPORTRADAR_KEY")
+  root_nfl_url: System.get_env("SPORTRADAR_ROOT_NFL_URL"),
+  root_nhl_url: System.get_env("SPORTRADAR_ROOT_NHL_URL"),
+  nfl_auth_key: System.get_env("SPORTRADAR_NFL_KEY"),
+  nhl_auth_key: System.get_env("SPORTRADAR_NHL_KEY")
 
 config :bookmaker, Bookmaker.Scheduler,
   jobs: [

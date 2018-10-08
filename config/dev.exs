@@ -51,8 +51,9 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :bookmaker, Bookmaker.Repo,
   adapter: Ecto.Adapters.Postgres,
+  url: "blah",
   username: "postgres",
   password: "postgres",
   database: "bookmaker_dev",
   hostname: "localhost",
-  pool_size: 10
+  pool_size: 1
